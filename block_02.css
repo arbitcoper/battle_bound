@@ -1,0 +1,370 @@
+/* 
+    display: flex;              //use flexbox
+    justify-content: center;    //center of horizontal
+    align-items: center;        //center of vertical
+*/
+
+body {
+    background-color : gray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0px;
+}
+
+/* #gameCanvas {
+    background-color: white;
+    border: 2px solid black;
+} */
+
+#player-word {
+    position: absolute;
+    margin : 10px;
+    left : 80px;
+    font : bold;
+    font-size: 20px;
+    font-family : Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+#opponent-word {
+    position: absolute;
+    margin : 10px;
+    left : 550px;
+    font : bold;
+    font-size: 20px;
+    font-family : Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+#player-hp-bar {
+    position: absolute;
+    top : 17px;
+    left : 155px;
+    background-color: rgb(13, 13, 145);
+    width : 200px;
+    height : 12px;
+    border-radius: 10px;
+    transition: width 0.1s ease-out;
+    /* transition-duration: 0.5s; */
+}
+
+/* #player-hp-bar:hover {  
+    width : 180px;
+} */
+
+#opponent-hp-bar {
+    position: absolute;
+    top : 17px;
+    left : 650px;
+    background-color: rgb(195, 27, 21);
+    width : 200px;
+    height : 12px;
+    border-radius: 10px;
+    transition: width 0.25s ease-out;
+}
+
+#game-window-layout {
+    background-color: black;
+    position: relative;
+    width : 900px;
+    height : 500px;
+}
+
+#main-window {
+    /* display : none; */
+    background-image: url("bg-01.jpg");
+    width : 900px;
+    height : 500px;
+    background-size: 100% 100%;
+}
+
+#rules-window {
+    display : none;
+    background-image: url("bg-01.jpg");
+    width : 900px;
+    height : 500px;
+    background-size: 100% 100%;
+}
+
+#fight-windows {
+    display : none;
+    background-image: url("bg-01.jpg");
+    width : 900px;
+    height : 500px;
+    background-size: 100% 100%;
+}
+
+#pause-window {
+    position: absolute;
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%);
+    display: none;
+    justify-content : center;
+    align-items: center;
+    /* background-color: rgb(29, 29, 133); */
+    background-image: linear-gradient(to right, rgb(16, 16, 89), rgb(19, 19, 217));
+    width : 400px;
+    height: 200px;
+    /* opacity : 0.8; */
+    border-radius: 15px;
+    /* transition: width 0.8s ease-in; */
+    /* transition-duration: 0.8s; */
+    /* gap: 0px;  */
+    /* |--> Optional: Add some space between the divs containing buttons */
+}
+
+#resume-game-div, #exit-game-div {
+    display : flex;
+    align-items: center;
+    justify-content: center;
+    width : 100%;
+    height : 100%;
+}
+
+#resume-game, #exit-game {
+    /* transform : translate(-50%, -50%); */
+    width : 60%;
+    height : 25%;
+    border-radius: 15px;
+    border : none;
+    background-color: rgb(252, 252, 254);
+    /* cursor : pointer; */
+    /*  |--> Changes pointer to hand when mouse scrolled over the button */
+}
+
+.popup-window {
+    position: absolute;
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%);
+    display: none;
+    flex-direction: column;
+    justify-content : center;
+    align-items: center;
+    background-image: linear-gradient(to right, rgb(16, 16, 89), rgb(19, 19, 217));
+    width : 400px;
+    height: 200px;
+    border-radius: 15px;
+}
+
+.won-lost-text-01 {
+    display : flex;
+    align-items: center;
+    justify-content: center;
+    width : 100%;
+    height : 50%;
+    color : rgb(229, 216, 67);
+    font-size: 25px;
+}
+
+.final-text-01 {
+    display : flex;
+    align-items: center;
+    justify-content: center;
+    width : 100%;
+    height : 50%;
+    color : rgb(229, 216, 67);
+    font-size: 20px;
+}
+
+#go-to-next-level {
+    position: relative;
+    display : flex;
+    align-items: center;
+    justify-content: center;
+    width : 200px;
+    height : 40px;
+    color : rgb(229, 216, 67);
+    font-size: 20px;
+    /* width : 200px; */
+    background-color: #000000;
+    border-radius: 10px;
+}
+
+#next-level-text {
+    position: absolute;
+    left : 8%;
+}
+
+#won-button-01 {
+    position: absolute;
+    width : 50px;
+    height: 100%;
+    right: 0;
+    margin-right: 0px;
+    background-color: white;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border : none;
+}
+
+#go-to-home, #go-to-home-win {
+    display : flex;
+    align-items: center;
+    justify-content: center;
+    height : 30%;
+    width : 30%;
+}
+
+#exit-lost-game, #exit-won-game {
+    width : 80%;
+    height : 70%;
+    border-radius: 10px;
+    border : none;
+}
+
+
+.game-name {
+    color :rgb(29, 29, 133);
+    /* font-style : oblique; */
+    font-size : 50px;
+    position: absolute;
+    left : 330px;
+    /* transform: translate(50%,50%); */
+    font-family : Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+#play-button {
+    position: absolute;
+    background-color: rgb(29, 29, 133);
+    color : white;
+    width : 170px;
+    height : 45px;
+    top : 150px;
+    left : 205px;
+}
+
+#rules-button {
+    position: absolute;
+    background-color: rgb(29, 29, 133);
+    color : white;
+    width : 170px;
+    height : 45px;
+    top : 150px;
+    left : 520px;
+}
+
+.rect-base {
+    position: absolute;
+    width : 900px;
+    height : 80px;
+    background-color: black;
+    top : 420px;
+}
+
+.object {
+    position: absolute;
+    height : 200px;
+    width : 200px;
+    top : 220px;
+}
+
+#initial-pose-right {
+    left : 10px;
+}
+#punching-man-right {
+    left : 320px;
+}
+#punching-man-left {
+    left : 680px;
+}
+
+.back-buttons {
+    position: absolute;
+    color : white;
+    font : bold;
+    font-size: medium;
+    background-color: rgb(29, 29, 133);
+    width : 80px;
+    height : 30px;
+    top : 20px;
+    left: 20px;
+    border-radius: 10px;
+}
+
+#rules-header {
+    position: absolute;
+    font-size : 25px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    /* background-color: rgb(29, 29, 133); */
+    background-image: linear-gradient(to right, rgb(30, 30, 170), rgb(76, 72, 125));
+    color : white;
+    width : 190px;
+    height : 40px;
+    top : 15px;
+    left :365px;
+    text-align : center;
+    padding-top: 10px;
+    border-radius: 10px;
+}
+
+#para-rules {
+    position: absolute;
+    font-size: 20px;
+    /* color : rgb(14, 14, 14); */
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    left : 120px;
+    top : 100px;
+    line-height: 25px;
+}
+
+#initial-pose-right-ingame {
+    left : 10px;
+}
+
+#initial-pose-left-ingame {
+    left : 690px;
+}
+
+#pause-game-button {
+    position: absolute;
+    width : 30px;
+    height : 30px;
+    left : 10px;
+    top : 10px;
+    color: white;
+    background-color: rgb(29, 29, 133);
+}
+
+.levels-position-left {
+    position: absolute;
+    /* color : #ea8010; */
+    top : 460px;
+    left : 30px;
+    font : bold;
+    font-size: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.levels-position-right {
+    position: absolute;
+    /* color : #ea8010; */
+    top : 460px;
+    left : 650px;
+    font : bold;
+    font-size: 22px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+#text-level-1, #text-level-2, #text-level-3, #text-level-4, #text-level-5 {
+    display: none;
+}
+
+#text-level-1 { color : #1dcc8c;}
+#text-level-2 { color : #109dde;}
+#text-level-3 { color : #FFFF00;}
+#text-level-4 { color : #FFA726;}
+#text-level-5 { color : #ef1717;}
+
+/* #level-1 { display : none; }
+#level-11 { display : none; }
+#level-2 { display : none; }
+#level-22 { display : none; }
+#level-3 { display : none; }
+#level-33 { display : none; }
+#level-4 { display : none; }
+#level-44 { display : none; }
+#level-5 { display : none; }
+#level-55 { display : none; } */
+

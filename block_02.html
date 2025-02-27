@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Battle Bound </title>
+        <link rel = "stylesheet" href = "block_02.css">
+    </head>
+
+    <body>
+        <div id = "game-window-layout">
+            <div id = "main-window">
+                <div class = "game-name">
+                    BATTLE BOUND
+                </div>
+                <button id = "play-button" onclick = "startGame()"> PLAY </button>
+                <button id = "rules-button" onclick = "showRules()"> RULES </button>    
+                <div class = "rect-base"> </div>
+                <img class = "object" id = "initial-pose-right" src = "initial_pose_right.png">
+                <img class = "object" id = "punching-man-right" src = "punching-man-right.png">
+                <img class = "object" id = "punching-man-left" src = "punching-man-left.png">
+            </div>
+
+            <div id = "rules-window"> 
+                <button class = "back-buttons" onclick = "goToHomePage()"> Back </button>
+                <div id = "rules-header"> RULES </div> 
+                <div id = "para-rules">
+                    1. Fight against the opponent & win to go to next level. <br>
+                    2. Both players have HPs (Health Points). Whoever will get <br>
+                        &emsp; to zero HP first will lose the match. <br>
+                    3. Knockout : You will have to restart the game in case you lose any match .
+                    <br><br><br>
+                    Controls : <br>
+                    &emsp; A  -  Move Left   <br>
+                    &emsp; D  -  Move RIght  <br>
+                    <!-- &emsp; S  -  Dodge <br> -->
+                    &emsp; SHIFT  -  Attack
+                </div>
+                <div class = "rect-base"> </div>
+            </div>
+            
+            <div id = "fight-windows">
+                <button id = "pause-game-button" onclick="pauseGame()"> || </button>
+                <audio id = "mouse-click-01" src = "mouse-click-01.mp3"> </audio>
+                <div class = "rect-base"> </div>
+                <audio id = "punch-right-sound" src = "punch-right-01.mp3"> </audio>
+                <audio id = "punch-left-sound" src = "punch-left-01.mp3"> </audio>
+                <p id = "player-word"> Player </p>
+                <p id = "opponent-word"> Opponent </p>
+                <div id = "player-hp-bar"> </div>
+                <div id = "opponent-hp-bar"> </div>
+                <img class = "object" id = "initial-pose-right-ingame" src = "initial_pose_right.png">
+                <img class = "object" id = "initial-pose-left-ingame" src = "initial_pose_left.png">
+            </div>
+
+            <div id = "text-level-1">
+                <div class = "levels-position-left" id = "level-1"> LEVEL - 1 : Hostel Havoc </div>
+                <div class = "levels-position-right" id = "level-11"> Location : Hostel Area </div>
+            </div>
+            <div id = "text-level-2">
+                <div class = "levels-position-left" id = "level-2"> LEVEL - 2: Library Clash </div>
+                <div class = "levels-position-right" id = "level-22"> Location: Central Library </div>
+            </div>
+            <div id = "text-level-3"> 
+                <div class = "levels-position-left" id = "level-3"> LEVEL - 3 : Admin Assault </div>
+                <div class = "levels-position-right" id = "level-33"> Location: Admin Building </div>
+            </div>
+            <div id = "text-level-4"> 
+                <div class = "levels-position-left" id = "level-4"> LEVEL - 4 : Block Brawl </div>
+                <div class = "levels-position-right" id = "level-44"> Location: Block-III </div>
+            </div>
+            <div id = "text-level-5"> 
+                <div class = "levels-position-left" id = "level-5"> LEVEL - 5 : Gate Showdown </div>
+                <div class = "levels-position-right" id = "level-55"> Location: Main Gate </div>
+            </div>
+            
+            <div id = "pause-window">
+                <div id = "resume-game-div">
+                    <button id = "resume-game" onclick="pauseGame()">
+                        <img src = "resume-button.png" width = "35%">    
+                    </button>
+                </div>
+                <div id = "exit-game-div">
+                    <button id = "exit-game" onclick="goToHomePage()">
+                        <img src = "home-button.png" width = "30%">    
+                    </button>
+                </div>
+            </div>
+
+            <div class = "popup-window" id = "player-win-window">
+                <div class = "won-lost-text-01"> 
+                    YOU WON THIS LEVEL! 
+                </div>
+                <div id = "go-to-next-level">
+                    <p id = "next-level-text"> NEXT LEVEL </p>
+                    <button id = "won-button-01" onclick="nextLevel()">
+                        <img src = "resume-button.png" width = "60%" height = "60%">    
+                    </button>
+                </div>
+            </div>
+
+            <div class = "popup-window" id = "player-lost-window">
+                <div class = "won-lost-text-01"> 
+                    YOU LOST THIS LEVEL!
+                </div>
+                <div id = "go-to-home">
+                    <button id = "exit-lost-game" onclick="goToHomePage()">
+                        <img src = "home-button.png" width = "30%">    
+                    </button>
+                </div>
+            </div>
+
+            <div class = "popup-window" id = "final-winning-window">
+                <div class = "final-text-01"> 
+                    Congrats! You Completed All The Levels.
+                </div>
+                <div id = "go-to-home-win">
+                    <button id = "exit-won-game" onclick="goToHomePage()">
+                        <img src = "home-button.png" width = "30%">    
+                    </button>
+                </div>
+            </div>
+        </div>
+        <script src = "block_02.js"> </script>
+    </body>
+</html>
+
+<!-- 
+relative path for src of img 
+File Name : image.png
+Folder Name : battlebound01
+/battlebound01/image.png  or image.png
+
+for src of img, copy url of the image of share option of the image 
+ present in the google drive and then copy the part of the url just after /d/
+ and uptill a slash or question-mark is encountered
+ and
+ append the copied part in the following string :
+ "https://drive.google.com/thumbnail?id=" 
+
+ For playing audio file:
+  "https://docs.google.com/uc?export=download&id="
+
+ 1. initial_pose_left : https://drive.google.com/thumbnail?id=1Zr678GJ1I9GLl5_Uqog0cV1H3eiyjZi_
+ 2. initial_pose_right : https://drive.google.com/thumbnail?id=14a8xSlm16CX6IpcUoFeSfl-K4uRmhn77
+ 3. punching_man_left : https://drive.google.com/thumbnail?id=1PR97jSaVv0zjbE0-YUbgFHs475RledfB
+ 4. punching_man_right : https://drive.google.com/thumbnail?id=1HFYZLp5ZhXUAx3EivP_Ycio8dYqWEuh_
+ 5. lost_player_left : https://drive.google.com/thumbnail?id=1SEcw8QhTaUW8K-cYpWXnmiN2IG2_MzNu
+ 6. lost_player_right : https://drive.google.com/thumbnail?id=1vgyYFSnYrEhMCd70CVcj-8cn-Q8AIEBy
+
+
+ e.g.- Copied link : 
+ https://drive.google.com/file/d/1D1tX3RYQj-nkXN-TBgJis9oTjjxn0eSf/view?usp=sharing
+ link to be used in src : 
+ https://drive.google.com/thumbnail?id=1D1tX3RYQj-nkXN-TBgJis9oTjjxn0eSf
+  -->
+ 
